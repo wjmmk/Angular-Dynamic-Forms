@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
+    this.buildForm();
   }
 
   
@@ -45,6 +45,20 @@ export class RegisterComponent implements OnInit {
     }
     if (!parseFloat(password[0])) {
       error = { ...error, number: 'must start with a number' };
+    }
+    return error;
+  }
+
+  public register() {
+    const user = this.formGroup.value;
+    console.log(user);
+  }
+
+  public getError(controlName: string): string {
+    let error = '';
+    const control = this.formGroup.get(controlName);
+    if (control.touched && control.errors != null) {
+      error = JSON.stringify(control.errors);
     }
     return error;
   }

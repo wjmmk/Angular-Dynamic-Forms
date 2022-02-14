@@ -1,18 +1,16 @@
 <form [formGroup]="formGroup">
-    <label for="registeredOn">Registered On</label>
-    <input name="registeredOn"
-          formControlName="registeredOn"
-          type="date" />
-    <label for="name">Name</label>
-    <input name="name"
-          formControlName="name"
-          type="text" />
-    <label for="email">E-mail</label>
-    <input name="email"
-          formControlName="email"
-          type="email" />
-    <label for="password">Password</label>
-    <input name="password"
-          formControlName="password"
-          type="password" />
-  </form>
+  <label for="registeredOn">Registered On</label>
+  <input name="registeredOn" formControlName="registeredOn" type="date" />
+  <label for="name">Name</label>
+  <input name="name" formControlName="name" type="text" />
+  <label for="email">E-mail</label>
+  <input name="email" formControlName="email" type="email" />
+  <label for="password">Password</label>
+  <input name="password" formControlName="password" type="password" />
+
+  <button (click)="register()" [disabled]="formGroup.invalid">Register me!</button>
+</form>
+
+<span>{{ getError('name')}}</span>
+<span>{{ getError('email')}}</span>
+<span>{{ getError('password')}}</span>
