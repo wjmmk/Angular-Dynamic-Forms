@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
+## Validacion del Campo Password
+
+La clave debe comenzar con un Numero(#), seguido del Signo ($) y tener almenos 4 Caracteres.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

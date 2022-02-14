@@ -13,6 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SecurityRoutingModule,
     ReactiveFormsModule
   ],
-  exports: []
+  exports: [RegisterComponent]
 })
 export class SecurityModule { }
