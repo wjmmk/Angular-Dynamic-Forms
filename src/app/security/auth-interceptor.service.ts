@@ -15,16 +15,17 @@ import { TokenStoreService } from './token-store.service';
 export class AuthInterceptorService {
 
   private token = '';
-  handleError: any;
+  //handleError: any;
   constructor(private router: Router, private tokenStore: TokenStoreService) {
     this.tokenStore.select$()
       .subscribe(token => (this.token = token));
   }
 
 
-  /* public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(this.handleError.bind(this)));
   }
+
   private handleError(err) {
     const unauthorized_code = 401;
     if (err instanceof HttpErrorResponse) {
@@ -33,14 +34,15 @@ export class AuthInterceptorService {
       }
     }
     return throwError(err);
-  } */
+  }
 
-  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+   // Probando en el Servidor
+  /* public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authHeader = { Authorization: 'bearer ' + this.token };
     const authReq = req.clone({ setHeaders: authHeader });
     return next.handle(authReq)
       .pipe(catchError(this.handleError.bind(this)));
-  }
+  } */
 
 }
 function catchError(arg0: any): import("rxjs").OperatorFunction<HttpEvent<any>, HttpEvent<any>> {

@@ -54,11 +54,16 @@ export class RegisterComponent implements OnInit {
   }
 
   public register() {
+    const user = this.formGroup.value;
+    console.log(user);
+  }
+
+  /* public register() {  // Esto es para el Servidor Heroku
     const url = 'https://api-base.herokuapp.com/api/pub/credentials/registration';
     const user = this.formGroup.value;
     this.httpClient.post<any>(url, user)
       .subscribe(res => this.tokenStore.dispatch(res.token));
-  }
+  } */
 
   public getError(controlName: string): string {
     let error = '';

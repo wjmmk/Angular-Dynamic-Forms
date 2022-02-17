@@ -118,6 +118,124 @@
           }
         }
       }
+    },
+    "schemat": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/schemat",
+      "sourceRoot": "projects/schemat/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/schemat",
+            "index": "projects/schemat/src/index.html",
+            "main": "projects/schemat/src/main.ts",
+            "polyfills": "projects/schemat/src/polyfills.ts",
+            "tsConfig": "projects/schemat/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/schemat/src/favicon.ico",
+              "projects/schemat/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/schemat/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/schemat/src/environments/environment.ts",
+                  "with": "projects/schemat/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "schemat:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "schemat:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "schemat:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/schemat/src/test.ts",
+            "polyfills": "projects/schemat/src/polyfills.ts",
+            "tsConfig": "projects/schemat/tsconfig.spec.json",
+            "karmaConfig": "projects/schemat/karma.conf.js",
+            "assets": [
+              "projects/schemat/src/favicon.ico",
+              "projects/schemat/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/schemat/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/schemat/tsconfig.app.json",
+              "projects/schemat/tsconfig.spec.json",
+              "projects/schemat/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/schemat/e2e/protractor.conf.js",
+            "devServerTarget": "schemat:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "schemat:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "practice-reactive-form"
