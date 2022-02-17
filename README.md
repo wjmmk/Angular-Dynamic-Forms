@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
+### Multi-project repository to run Angular applications.
+
 ## Validacion del Campo Password
 
 La clave debe comenzar con un Numero(#), seguido del Signo ($) y tener almenos 4 Caracteres.
