@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { TokenStoreService } from '../token-store.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,9 @@ export class RegisterComponent implements OnInit {
   public formGroup: FormGroup = new FormGroup({});
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private httpClient: HttpClient,
+    private tokenStore: TokenStoreService
   ) { }
 
 
@@ -53,6 +57,13 @@ export class RegisterComponent implements OnInit {
     const user = this.formGroup.value;
     console.log(user);
   }
+
+  /* public register() {  // Esto es para el Servidor Heroku
+    const url = 'https://api-base.herokuapp.com/api/pub/credentials/registration';
+    const user = this.formGroup.value;
+    this.httpClient.post<any>(url, user)
+      .subscribe(res => this.tokenStore.dispatch(res.token));
+  } */
 
   public getError(controlName: string): string {
     let error = '';
